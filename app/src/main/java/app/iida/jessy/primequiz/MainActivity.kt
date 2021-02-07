@@ -7,30 +7,37 @@ import android.util.Log
 import java.util.*
 import android.widget.TextView
 
+
 class MainActivity : AppCompatActivity() {
-    companion object{
-        private const val QUESTION_CONUT: Int = 10
+
+    companion object {
+        private const val QUESTION_COUNT = 10
     }
 
     var random: Random = Random()
-    val questions: IntArray = IntArray(QUESTION_CONUT)
+    val question: IntArray = IntArray(QUESTION_COUNT)
     var point: Int = 0
     var answerCount: Int = 0
-    var textView = findViewById<TextView>(R.id.textView)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        for (i in 0 until QUESTION_CONUT){
+        var textView = findViewById<TextView>(R.id.textView)
+
+        for (i in 0 until  QUESTION_COUNT){
             val number = random.nextInt(1000)
-            Log.d("Number","QUESTION_" + i + ":" + number.toString())
-            questions[i] = number;
+            Log.d("Number","Question"+ number.toString())
+            question[i] = number
         }
+
         point = 0
         answerCount = 0
 
-        textView.text = questions[answerCount].toString()
+        textView.text = question[answerCount].toString() + ""
         textView.setTextColor(Color.BLACK)
+
+
     }
 }
+
